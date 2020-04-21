@@ -16,6 +16,7 @@ const (
 	// URLs
 	accountURL  = "https://account-public-service-prod.ol.epicgames.com/account/api"
 	fortniteURL = "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api"
+	launcherURL = "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api"
 )
 
 // ClientOptions defines user options.
@@ -37,6 +38,7 @@ type Client struct {
 	// Services
 	Account  *AccountService
 	Fortnite *FortniteService
+	Launcher *LauncherService
 }
 
 type service struct {
@@ -80,6 +82,7 @@ func NewClient(options *ClientOptions) *Client {
 
 	c.Account = (*AccountService)(&c.common)
 	c.Fortnite = (*FortniteService)(&c.common)
+	c.Launcher = (*LauncherService)(&c.common)
 
 	// Keep tokens up-to-date
 	if options.UpdateTokens {
